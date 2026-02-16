@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PRIMALS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div id="game-container" class="game-container">
+    
+    <!-- CAPA DE FONDO -->
+    <div id="sky" class="sky day">
+        <div id="stars" class="stars"></div>
+        <div class="aurora"></div>
+        <div id="sun" class="celestial-body sun"></div>
+        <div id="moon" class="celestial-body moon" style="display: none;"></div>
+    </div>
+    
+    <div class="ground">
+        <div class="grid-floor"></div>
+    </div>
+
+    <!-- BOTÓN TIENDA -->
+    <button id="shop-btn" class="shop-btn" title="Tienda">🛒</button>
+
+    <!-- UI PRINCIPAL -->
+    <div class="ui">
+        
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">◉ PRIMALS</div>
+            <div class="header-icons">
+                <span id="world-year">2087</span>
+                <span>⚡</span>
+                <span>◉</span>
+            </div>
+        </header>
+
+        <!-- FILA DE PRIMALS -->
+        <section id="primals-row" class="primals-row">
+            <!-- Generado dinámicamente por uiRenderer -->
+        </section>
+
+        <!-- AVATAR DEL JUGADOR -->
+        <section id="avatar-section" class="avatar-section">
+            <div id="avatar-wrap" class="avatar-wrap">
+                <div class="avatar-glow"></div>
+                <div id="player-avatar" class="avatar-main age-adult">
+                    <div id="avatar-placeholder" class="avatar-placeholder">?</div>
+                    <div id="player-level" class="avatar-level">1</div>
+                </div>
+            </div>
+            <div class="avatar-info-compact">
+                <div id="player-name" class="avatar-name">NOMBRE</div>
+                <div id="player-meta" class="avatar-meta">0 años • Sin profesión</div>
+                <div id="player-money" class="avatar-money">◉ 0 CRÉDITOS</div>
+            </div>
+        </section>
+
+        <!-- STATS COMPACTOS -->
+        <section id="stats-compact" class="stats-compact">
+            <div class="stat-mini" data-stat="health">
+                <div class="stat-mini-icon">❤️</div>
+                <div id="stat-health" class="stat-mini-value">50</div>
+                <div class="stat-mini-label">Salud</div>
+            </div>
+            <div class="stat-mini" data-stat="happiness">
+                <div class="stat-mini-icon">😊</div>
+                <div id="stat-happiness" class="stat-mini-value">50</div>
+                <div class="stat-mini-label">Felicidad</div>
+            </div>
+            <div class="stat-mini" data-stat="intelligence">
+                <div class="stat-mini-icon">🧠</div>
+                <div id="stat-intelligence" class="stat-mini-value">50</div>
+                <div class="stat-mini-label">Inteligencia</div>
+            </div>
+            <div class="stat-mini" data-stat="strength">
+                <div class="stat-mini-icon">💪</div>
+                <div id="stat-strength" class="stat-mini-value">50</div>
+                <div class="stat-mini-label">Fuerza</div>
+            </div>
+            <div class="stat-mini" data-stat="appearance">
+                <div class="stat-mini-icon">✨</div>
+                <div id="stat-appearance" class="stat-mini-value">50</div>
+                <div class="stat-mini-label">Apariencia</div>
+            </div>
+        </section>
+
+        <!-- DIARIO / HISTORIAL -->
+        <section id="diary" class="diary">
+            <div class="diary-empty">No hay eventos registrados</div>
+        </section>
+
+        <!-- BOTÓN DE AÑO -->
+        <section class="year-section">
+            <button id="btn-year" class="btn-year">+1 AÑO</button>
+            <div id="time-warning" class="time-warning" style="display: none;">
+                ⚠️ Meses usados: <span id="months-used">0</span>/12
+            </div>
+        </section>
+
+        <!-- FOOTER / NAVEGACIÓN -->
+        <footer class="footer">
+            <button id="btn-life" class="btn-footer" data-panel="life">
+                <span class="btn-icon" style="color: #ff6b6b;">👤</span>
+                <span class="btn-text">Vida</span>
+            </button>
+            <button id="btn-leisure" class="btn-footer" data-panel="leisure">
+                <span class="btn-icon" style="color: #4ecdc4;">🎮</span>
+                <span class="btn-text">Ocio</span>
+            </button>
+            <button id="btn-people" class="btn-footer" data-panel="people">
+                <span class="btn-icon" style="color: #ff00ff;">👥</span>
+                <span class="btn-text">Gente</span>
+            </button>
+            <button id="btn-work" class="btn-footer" data-panel="work">
+                <span class="btn-icon" style="color: #ffd700;">💼</span>
+                <span class="btn-text">Trabajo</span>
+            </button>
+        </footer>
+    </div>
+
+    <!-- OVERLAY Y PANELES -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- PANEL: PRIMAL SELECCIONADO -->
+    <aside id="panel-primal" class="side-panel">
+        <div class="panel-header">
+            <h2>◉ Primal</h2>
+            <button class="panel-close" data-close>×</button>
+            <div id="primal-tabs" class="primal-tabs"></div>
+        </div>
+        <div id="primal-content" class="panel-content"></div>
+    </aside>
+
+    <!-- PANEL: PERFIL JUGADOR -->
+    <aside id="panel-player" class="side-panel">
+        <div class="panel-header">
+            <h2>◉ Perfil</h2>
+            <button class="panel-close" data-close>×</button>
+        </div>
+        <div id="player-content" class="panel-content"></div>
+    </aside>
+
+    <!-- PANEL: TIENDA -->
+    <aside id="panel-shop" class="side-panel">
+        <div class="panel-header">
+            <h2 style="color: #ffd700;">◉ Tienda</h2>
+            <button class="panel-close" data-close>×</button>
+        </div>
+        <div id="shop-content" class="panel-content"></div>
+    </aside>
+
+    <!-- PANEL: VIAJE/CAPTURA -->
+    <aside id="panel-travel" class="side-panel">
+        <div class="panel-header">
+            <h2 style="color: #00d4ff;">◉ Expedición</h2>
+            <button class="panel-close" data-close>×</button>
+        </div>
+        <div id="travel-content" class="panel-content"></div>
+    </aside>
+
+    <!-- PANEL: COMBATE TÁCTICO -->
+    <aside id="panel-combat" class="side-panel combat-panel">
+        <div class="panel-header">
+            <h2 style="color: #ff4444;">⚔️ Combate</h2>
+        </div>
+        <div id="combat-content" class="panel-content"></div>
+    </aside>
+
+    <!-- PANEL: EVENTO CON DECISIONES -->
+    <aside id="panel-event" class="side-panel event-panel">
+        <div class="panel-header">
+            <h2 id="event-title">Evento</h2>
+        </div>
+        <div id="event-content" class="panel-content">
+            <p id="event-description"></p>
+            <div id="event-options" class="event-options"></div>
+        </div>
+    </aside>
+
+    <!-- NOTIFICACIONES -->
+    <div id="notifications" class="notifications"></div>
+
+</div>
+
+<!-- SCRIPTS (orden importa) -->
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
