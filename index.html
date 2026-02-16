@@ -31,23 +31,47 @@
             <div class="header-icons">⚡ ◉</div>
         </div>
 
-        <!-- PRIMALS -->
-        <div class="primals-row" id="primalsRow"></div>
+        <!-- PRIMALS - 3 slots alrededor del avatar -->
+        <div class="primals-container">
+            <!-- Primal izquierda -->
+            <div class="primal-slot side" id="primal-left">
+                <div class="primal-orb primal-empty">
+                    <div class="primal-orb-placeholder">1</div>
+                </div>
+                <div class="primal-stats-float"><span style="color: #666;">VACÍO</span></div>
+            </div>
 
-        <!-- AVATAR CENTRAL -->
-        <div class="avatar-section">
-            <div class="avatar-wrap" id="avatar-wrap">
-                <div class="avatar-glow"></div>
-                <div class="avatar-main age-adult" id="playerAvatar">
-                    <div class="avatar-placeholder" id="avatarPlaceholder">?</div>
-                    <div class="avatar-level" id="playerLevel">1</div>
+            <!-- AVATAR CENTRAL -->
+            <div class="avatar-section">
+                <div class="avatar-wrap" id="avatar-wrap">
+                    <div class="avatar-glow"></div>
+                    <div class="avatar-main age-baby" id="playerAvatar">
+                        <div class="avatar-placeholder" id="avatarPlaceholder">👶</div>
+                        <div class="avatar-level" id="playerLevel">1</div>
+                    </div>
+                </div>
+                <div class="avatar-info-compact">
+                    <div class="avatar-name" id="playerName">BEBÉ DESCONOCIDO</div>
+                    <div class="avatar-meta" id="playerMeta">0 años • Sin profesión</div>
+                    <div class="avatar-money" id="playerMoney">◉ 0 CRÉDITOS</div>
                 </div>
             </div>
-            <div class="avatar-info-compact">
-                <div class="avatar-name" id="playerName">BEBÉ DESCONOCIDO</div>
-                <div class="avatar-meta" id="playerMeta">0 años • Sin profesión</div>
-                <div class="avatar-money" id="playerMoney">◉ 0 CRÉDITOS</div>
+
+            <!-- Primal derecha -->
+            <div class="primal-slot side" id="primal-right">
+                <div class="primal-orb primal-empty">
+                    <div class="primal-orb-placeholder">2</div>
+                </div>
+                <div class="primal-stats-float"><span style="color: #666;">VACÍO</span></div>
             </div>
+        </div>
+
+        <!-- Primal abajo (establo) -->
+        <div class="primal-slot bottom" id="primal-bottom">
+            <div class="primal-orb primal-empty">
+                <div class="primal-orb-placeholder">3</div>
+            </div>
+            <div class="primal-stats-float"><span style="color: #666;">ESTABLO</span></div>
         </div>
 
         <!-- STATS -->
@@ -121,7 +145,6 @@
         <div class="panel-header">
             <div style="font-size: 20px; font-weight: 800; color: #00ff88;">◉ Primal</div>
             <button class="panel-close" data-close>×</button>
-            <div class="primal-tabs" id="primalTabs"></div>
         </div>
         <div class="panel-content" id="primalPanelContent"></div>
     </div>
